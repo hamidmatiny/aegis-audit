@@ -1,0 +1,68 @@
+name: aegis-audit
+display_name: AEGIS Audit Owner
+description: |
+  SE I Track B owner of the `audit` component in github.com/hamidmatiny/aegis.
+  May open PRs; no merge/deploy/prod credentials. Reports to aegis-ceo.
+avatar_prompt: >
+  A focused software engineer at a workbench, studying a labeled component diagram
+  for an enforcement gateway, cool instrument lighting, cinematic portrait, no logos.
+resources:
+  cpu: "2"
+  memory: "4g"
+
+plugins:
+  marketplaces:
+    - name: abilityai
+      source: abilityai/abilities
+  installed:
+    - agent-dev@abilityai
+    - trinity@abilityai
+    - utilities@abilityai
+
+credentials:
+  env_file:
+    - AEGIS_REPO_URL
+    - AEGIS_PR_TOKEN
+    - AEGIS_COMPONENT
+
+credential_setup:
+  - name: AEGIS_REPO_URL
+    title: AEGIS product repo URL
+    description: HTTPS clone URL for github.com/hamidmatiny/aegis
+    required: true
+    secret: false
+    format: url
+    setup_url: https://github.com/hamidmatiny/aegis
+  - name: AEGIS_PR_TOKEN
+    title: Scoped PR-only GitHub token
+    description: Fine-grained PAT limited to hamidmatiny/aegis with Contents R/W + Pull requests R/W. Not a broad personal token.
+    required: false
+    secret: true
+    format: secret
+    setup_url: https://github.com/settings/personal-access-tokens
+  - name: AEGIS_COMPONENT
+    title: Owned component path
+    description: Monorepo subdirectory this agent owns
+    required: true
+    secret: false
+    format: text
+
+schedules:
+  - name: Daily component audit
+    cron: "0 8 * * *"
+    timezone: UTC
+    message: "Run /audit-component on `audit`. Cite real files. Update memory/backlog.md with findings. If a fix is ready, prepare /open-component-pr — do not merge."
+    purpose: Keep component ownership active without idle SE I days
+    enabled: false
+  - name: Update dashboard
+    cron: "0 */6 * * *"
+    timezone: UTC
+    message: "Run /update-dashboard from memory/ metrics."
+    purpose: Snapshot
+    enabled: false
+  - name: Reconcile docs
+    cron: "0 9 * * 1"
+    timezone: UTC
+    message: "Run /reconcile-docs (report-only)."
+    purpose: Weekly coherence
+    enabled: false

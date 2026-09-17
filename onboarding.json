@@ -1,0 +1,25 @@
+{
+  "phase": "hire",
+  "steps": [
+    {
+      "id": "creds",
+      "title": "Set AEGIS_REPO_URL + scoped AEGIS_PR_TOKEN",
+      "done": false
+    },
+    {
+      "id": "access",
+      "title": "Run /audit-repo-access",
+      "done": false
+    },
+    {
+      "id": "audit",
+      "title": "Run /audit-component (day-one backlog)",
+      "done": false
+    },
+    {
+      "id": "omniroute",
+      "title": "Confirm free-pool OmniRoute auth (aegis-infra)",
+      "done": false
+    }
+  ]
+}

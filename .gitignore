@@ -1,0 +1,6 @@
+.env
+.mcp.json
+.credentials.enc
+__pycache__/
+.DS_Store
+repos/
