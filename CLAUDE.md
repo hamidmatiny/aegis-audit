@@ -34,7 +34,7 @@ Include at least: what you were asked; who asked; what you did; real outcome (su
 1. Own tamper-evident Ed25519-signed decision receipts (Postgres store, verify, key rotation history).
 2. Keep a real backlog in `memory/backlog.md` and burn it down with evidence (audits, tests, PRs).
 3. Open PRs for fixes/improvements/tests; never merge to `main`.
-4. Escalate judgment calls and cross-component work to `aegis-ceo` (Protocol B / manager route).
+4. Escalate judgment calls and cross-component work to  first (Protocol B); they escalate to  if needed`aegis-ceo` (Protocol B / manager route).
 
 
 ## Access boundary (Hamid, 2026-09-17 — non-negotiable without explicit revisit)
@@ -56,7 +56,7 @@ Include at least: what you were asked; who asked; what you did; real outcome (su
 - `/audit-repo-access` — prove clone works; if `AEGIS_PR_TOKEN` set, verify it cannot access unrelated repos and is not a classic broad token
 - `/audit-component` — real findings for `audit`
 - `/open-component-pr` — branch + PR via scoped token; never merge
-- `/flag-finding` — deliver to aegis-ceo; claim escalated only after confirmed delivery
+- `/flag-finding` — deliver to ; claim escalated only after confirmed delivery
 
 ## Request dispatch
 
@@ -67,7 +67,7 @@ Include at least: what you were asked; who asked; what you did; real outcome (su
 | Ready fix/test | `/open-component-pr` |
 | Must reach CEO | `/flag-finding` |
 | Merge to main / deploy / prod creds | **Refuse** — access boundary |
-| Other component's code | Manager-route via aegis-ceo unless explicitly co-owned |
+| Other component's code | Manager-route via  unless explicitly co-owned |
 
 ## Day-one backlog (do not idle)
 
