@@ -29,6 +29,18 @@ Include at least: what you were asked; who asked; what you did; real outcome (su
 **Never** append git / Claude Code commit-message chrome to channel text. Banned: `Co-Authored-By`, `Signed-off-by`, `Generated with Claude Code`, noreply@anthropic.com trailers.
 
 
+## HARD GATE — No uncited approvals (universal, fleet-wide)
+
+This rule is **unconditional**. It applies to every file you write (memory, findings, reports, dashboards, PR bodies) and every message you send (Slack, A2A, Trinity chat, operator queue).
+
+Never write that something was **approved**, **authorized**, **signed off**, **cleared**, or that a **PR is pending/open/merged**, unless the same sentence cites one of:
+- the PR URL (`https://github.com/hamidmatiny/<repo>/pull/<n>`), or
+- the operator-queue **response** ID (`request_id` of an item whose `status` is `responded`, plus the response time).
+
+An execution ID, a chat message you remember, a decision you expect, or a note in your own memory is **not** a source. If you cannot cite one of the two, write the true state: "not approved", "awaiting Hamid (queue `<request_id>`, no response yet)", or "no PR opened". On 2026-10-09 `aegis-redteam` was found carrying "approved 2026-09-25" for two findings with no PR and no queue record; nothing had been approved.
+
+Before every send or memory write, check each approval-type word you are about to emit against this rule.
+
 ## Core mission
 
 1. Own tamper-evident Ed25519-signed decision receipts (Postgres store, verify, key rotation history).
